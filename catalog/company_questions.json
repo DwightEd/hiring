@@ -1,0 +1,273 @@
+[
+  {
+    "company": "华为",
+    "role": "AI 笔试",
+    "period": "2026-09-18",
+    "source_id": "huawei0918",
+    "title": "全局位与窗口注意力",
+    "paths": [
+      "companies/huawei/global_window_attention.py"
+    ],
+    "status": "题意明确；CLI 输入顺序采用练习约定",
+    "notes": "候选并集、正分过滤、同分小下标、整数加权求和；无 softmax。"
+  },
+  {
+    "company": "华为",
+    "role": "AI 笔试",
+    "period": "2026-09-18",
+    "source_id": "huawei0918",
+    "title": "流水线并行最小峰值负载",
+    "paths": [
+      "companies/huawei/pipeline_partition.py"
+    ],
+    "status": "题意明确，按标准题实现",
+    "notes": ""
+  },
+  {
+    "company": "华为",
+    "role": "AI 笔试",
+    "period": "2026-07-24",
+    "source_id": "huawei0724",
+    "title": "MoE Top-K 容量路由",
+    "paths": [
+      "companies/huawei/moe_capacity_routing.py"
+    ],
+    "status": "题意明确，按标准题实现",
+    "notes": ""
+  },
+  {
+    "company": "华为",
+    "role": "大模型算法",
+    "period": "2026-09-17",
+    "source_id": "huawei0917",
+    "title": "和为 K 的最长子数组",
+    "paths": [
+      "extra/max_length_sum_k.py"
+    ],
+    "status": "题意明确，按标准题实现",
+    "notes": ""
+  },
+  {
+    "company": "华为",
+    "role": "海思人工智能算法",
+    "period": "2020届",
+    "source_id": "cv2020",
+    "title": "指定区间反转链表",
+    "paths": [
+      "extra/0092_reverse_linked_list_ii.py"
+    ],
+    "status": "题意明确，按标准题实现",
+    "notes": ""
+  },
+  {
+    "company": "字节跳动",
+    "role": "Agent 开发",
+    "period": "2026-09",
+    "source_id": "bytedance0916",
+    "title": "树的子结构；有序 List 交集",
+    "paths": [
+      "extra/tree_substructure.py",
+      "extra/sorted_intersection.py"
+    ],
+    "status": "主体题意明确；交集采用集合语义",
+    "notes": "原帖未说明重复次数，本练习输出去重后的相同元素；无限流追问见待补说明。"
+  },
+  {
+    "company": "字节跳动",
+    "role": "AI Agent 开发",
+    "period": "2026-09-20",
+    "source_id": "bytedance0920",
+    "title": "工具成功率与最多失败工具",
+    "paths": [
+      "extra/tool_log_statistics.py"
+    ],
+    "status": "主题改编，接口与并列规则见文件头",
+    "notes": ""
+  },
+  {
+    "company": "阿里巴巴",
+    "role": "计算机视觉算法",
+    "period": "2019届",
+    "source_id": "cv2019",
+    "title": "N 个数中最大的 K 个数",
+    "paths": [
+      "extra/top_k_numbers.py"
+    ],
+    "status": "题意明确，按标准题实现",
+    "notes": ""
+  },
+  {
+    "company": "百度",
+    "role": "大模型算法",
+    "period": "2026-09",
+    "source_id": "baidu0920",
+    "title": "最长公共子序列；最长回文子串",
+    "paths": [
+      "hot100/16_多维动态规划/1143_longest_common_subsequence.py",
+      "hot100/16_多维动态规划/0005_longest_palindromic_substring.py"
+    ],
+    "status": "题意明确，按标准题实现",
+    "notes": ""
+  },
+  {
+    "company": "美团",
+    "role": "AI 应用开发",
+    "period": "2026-09-14",
+    "source_id": "meituan0914",
+    "title": "最长无重复子串",
+    "paths": [
+      "hot100/03_滑动窗口/0003_longest_substring_without_repeating_characters.py"
+    ],
+    "status": "题意明确，按标准题实现",
+    "notes": ""
+  },
+  {
+    "company": "小红书",
+    "role": "大模型算法",
+    "period": "2026-09",
+    "source_id": "xiaohongshu0920",
+    "title": "链表两两交换",
+    "paths": [
+      "hot100/07_链表/0024_swap_nodes_in_pairs.py"
+    ],
+    "status": "题意明确，按标准题实现",
+    "notes": ""
+  },
+  {
+    "company": "小红书",
+    "role": "大模型算法笔试",
+    "period": "2026-09",
+    "source_id": "xiaohongshu0920",
+    "title": "加权热度排序后去重 Top N",
+    "paths": [
+      "extra/weighted_unique_topk.py"
+    ],
+    "status": "主题改编，字段、权重与去重规则见文件头",
+    "notes": ""
+  },
+  {
+    "company": "京东",
+    "role": "算法工程师笔试",
+    "period": "2026-09",
+    "source_id": "jd0920",
+    "title": "按城市汇总订单金额",
+    "paths": [
+      "extra/city_order_totals.py"
+    ],
+    "status": "列表摘要主题改编",
+    "notes": "整数分、退款、重复记录的处理均为本仓库约定。"
+  },
+  {
+    "company": "快手",
+    "role": "Agent 开发",
+    "period": "2026-09",
+    "source_id": "kuaishou0920",
+    "title": "流式 JSON 解析/半包拼接",
+    "paths": [
+      "extra/stream_json.py"
+    ],
+    "status": "主题改编，限定顶层对象或数组",
+    "notes": "按字符分块；若输入是字节流，需要增量 UTF-8 解码器。"
+  },
+  {
+    "company": "地平线",
+    "role": "智能驾驶算法实习",
+    "period": "2019届",
+    "source_id": "cv2019",
+    "title": "字符类型补集；重复数字计数；矩形相交面积；Softmax 前后向",
+    "paths": [
+      "extra/character_complement.py",
+      "extra/1012_numbers_with_repeated_digits.py",
+      "extra/rectangle_overlap.py",
+      "ai/softmax.py"
+    ],
+    "status": "题意明确；矩形按面积实现",
+    "notes": "原帖把重叠面积与 IoU 混称，按题目明确要求实现面积；IoU 另见 AI 模块。"
+  },
+  {
+    "company": "地平线",
+    "role": "计算机视觉算法",
+    "period": "2020届",
+    "source_id": "cv2020",
+    "title": "二叉树右视图",
+    "paths": [
+      "hot100/08_二叉树/0199_binary_tree_right_side_view.py"
+    ],
+    "status": "题意明确，按标准题实现",
+    "notes": ""
+  },
+  {
+    "company": "58同城",
+    "role": "机器学习算法",
+    "period": "2020届",
+    "source_id": "cv2020",
+    "title": "手写 NMS",
+    "paths": [
+      "ai/iou_nms.py"
+    ],
+    "status": "题意明确，按标准题实现",
+    "notes": ""
+  },
+  {
+    "company": "瓜子二手车",
+    "role": "机器学习算法",
+    "period": "2020届",
+    "source_id": "cv2020",
+    "title": "重复有序数组最左下标；不转字符串判断回文整数",
+    "paths": [
+      "hot100/11_二分查找/0034_find_first_and_last_position_of_element_in_sorted_array.py",
+      "extra/0009_palindrome_number.py"
+    ],
+    "status": "题意明确，按标准题实现",
+    "notes": "LC34 返回 [首,尾]；取结果第 0 项即首下标，不存在时为 -1。"
+  },
+  {
+    "company": "涂鸦移动",
+    "role": "软件开发（非 AI 岗）",
+    "period": "2020届",
+    "source_id": "cv2020",
+    "title": "Top K；三数之和",
+    "paths": [
+      "extra/top_k_numbers.py",
+      "hot100/02_双指针/0015_3sum.py"
+    ],
+    "status": "题意明确，按标准题实现",
+    "notes": ""
+  },
+  {
+    "company": "未披露公司",
+    "role": "视觉算法社招",
+    "period": "2021",
+    "source_id": "cv2021",
+    "title": "Soft-NMS；Focal Loss；Softmax",
+    "paths": [
+      "ai/soft_nms.py",
+      "ai/focal_loss.py",
+      "ai/softmax.py"
+    ],
+    "status": "题意明确，按标准题实现",
+    "notes": ""
+  },
+  {
+    "company": "未披露公司",
+    "role": "视觉算法社招",
+    "period": "2021",
+    "source_id": "cv2021",
+    "title": "二分、反转链表、最小栈、回文子串、最小 K 数、冒泡、枢轴位置、快排、无重复子串、N 皇后、第 K 大",
+    "paths": [
+      "hot100/11_二分查找/0035_search_insert_position.py",
+      "hot100/07_链表/0206_reverse_linked_list.py",
+      "hot100/12_栈/0155_min_stack.py",
+      "hot100/16_多维动态规划/0005_longest_palindromic_substring.py",
+      "extra/top_k_numbers.py",
+      "extra/bubble_sort.py",
+      "extra/partition_pivots.py",
+      "extra/quicksort.py",
+      "hot100/03_滑动窗口/0003_longest_substring_without_repeating_characters.py",
+      "hot100/10_回溯/0051_n_queens.py",
+      "hot100/13_堆/0215_kth_largest_element_in_an_array.py"
+    ],
+    "status": "题意明确，按标准题实现",
+    "notes": "LC35 是 lower_bound；要做精确二分须检查结果下标是否在界内且对应值等于目标。最小 K 数设置 largest=False。"
+  }
+]

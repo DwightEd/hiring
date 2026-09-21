@@ -1,0 +1,326 @@
+[
+  {
+    "id": "softmax",
+    "title": "稳定 Softmax 与反向传播",
+    "category": "数值计算",
+    "path": "ai/softmax.py",
+    "summary": "输入任意维 logits，在指定轴归一化；返回概率。反向接收概率 p 与上游梯度 g。",
+    "idea": "减去最大值防溢出；Jᵀg=p*(g-sum(g*p))，无需构造雅可比矩阵。",
+    "complexity": "O(N) 时间和空间"
+  },
+  {
+    "id": "cross_entropy",
+    "title": "多分类交叉熵及梯度",
+    "category": "损失函数",
+    "path": "ai/cross_entropy.py",
+    "summary": "logits 为 N×C，labels 为 N 个类别编号；返回平均损失及 logits 梯度。",
+    "idea": "使用 log-sum-exp，梯度为 (softmax-one_hot)/N。",
+    "complexity": "O(NC) 时间和空间"
+  },
+  {
+    "id": "sigmoid_bce",
+    "title": "稳定 Sigmoid 与二分类交叉熵",
+    "category": "损失函数",
+    "path": "ai/sigmoid_bce.py",
+    "summary": "输入 logits 和同形状 0/1 标签；返回平均 BCE 与梯度。",
+    "idea": "用 exp(-abs(x)) 避免 sigmoid 溢出，BCE 用 max(x,0)-xy+log1p(exp(-abs(x)))。",
+    "complexity": "O(N) 时间和空间"
+  },
+  {
+    "id": "layer_norm",
+    "title": "LayerNorm 前向与反向",
+    "category": "归一化",
+    "path": "ai/layer_norm.py",
+    "summary": "x 最后一维为特征，gamma/beta 长度 D；返回 y 与缓存。",
+    "idea": "对每个样本的特征维求均值和总体方差；反向保留投影到常数和归一化向量的修正项。",
+    "complexity": "O(ND) 时间和空间"
+  },
+  {
+    "id": "rms_norm",
+    "title": "RMSNorm",
+    "category": "归一化",
+    "path": "ai/rms_norm.py",
+    "summary": "x 最后一维为特征，weight 为缩放；不减均值。",
+    "idea": "按均方根缩放，与 LayerNorm 的去均值步骤不同。",
+    "complexity": "O(ND) 时间和空间"
+  },
+  {
+    "id": "batch_norm",
+    "title": "BatchNorm 训练与推理",
+    "category": "归一化",
+    "path": "ai/batch_norm.py",
+    "summary": "处理 N×D 输入；训练更新滑动均值和无偏方差，归一化使用有偏批方差。",
+    "idea": "区分训练统计量与推理 running statistics，训练 batch 至少两个样本。",
+    "complexity": "每次 O(ND) 时间、O(ND) 输出及临时空间"
+  },
+  {
+    "id": "attention",
+    "title": "缩放点积注意力和反向传播",
+    "category": "Transformer",
+    "path": "ai/attention.py",
+    "summary": "Q/K/V 形状为 ...×Tq×d、...×Tk×d、...×Tk×dv；mask=True 表示允许。全遮罩行输出零。",
+    "idea": "QKᵀ/sqrt(d)，屏蔽后按行 softmax，再乘 V；链式求导得到 dQ,dK,dV。",
+    "complexity": "O(Tq·Tk·(d+dv)) 时间，O(Tq·Tk) 注意力空间"
+  },
+  {
+    "id": "multihead_attention",
+    "title": "MHA、MQA、GQA 统一实现",
+    "category": "Transformer",
+    "path": "ai/multihead_attention.py",
+    "summary": "x 为 B×T×D，Q 头数 H，KV 头数 G 且 H%G=0；传入各投影矩阵，可选因果遮罩。",
+    "idea": "投影后显式拆头，G 个 KV 头供各组 Q 头共享，再合并投影。",
+    "complexity": "O(BTD²+BT²D) 常规稠密计算；O(BHT²) 注意力空间"
+  },
+  {
+    "id": "rope",
+    "title": "旋转位置编码 RoPE",
+    "category": "Transformer",
+    "path": "ai/rope.py",
+    "summary": "x 为 ...×T×D，D 为偶数，positions 为 T 个绝对位置。",
+    "idea": "相邻偶奇维按位置相关角度旋转；保持范数，点积只依赖相对角度。",
+    "complexity": "O(TD) 每个前导样本；同量级输出空间"
+  },
+  {
+    "id": "lora",
+    "title": "LoRA 线性层及合并权重",
+    "category": "Transformer",
+    "path": "ai/lora.py",
+    "summary": "x 最后一维 Din；W 为 Din×Dout，A 为 Din×r，B 为 r×Dout。",
+    "idea": "输出 xW+(alpha/r)(xA)B；合并时 W'=W+(alpha/r)AB。",
+    "complexity": "附加 O(Nr(Din+Dout)) 时间，O(r(Din+Dout)) 参数"
+  },
+  {
+    "id": "sampling",
+    "title": "Top-k、Top-p 与温度采样",
+    "category": "解码",
+    "path": "ai/sampling.py",
+    "summary": "输入一维有限 logits，temperature>0，top_k 可选，0<top_p<=1；返回 token 与过滤后概率。",
+    "idea": "先温度缩放、Top-k，再按概率累积保留跨过 p 的那一项，重新归一化。",
+    "complexity": "O(V log V) 时间，O(V) 空间；完整排序便于确定平分规则"
+  },
+  {
+    "id": "beam_search",
+    "title": "Beam Search",
+    "category": "解码",
+    "path": "ai/beam_search.py",
+    "summary": "next_log_probs(prefix) 返回词表对数概率；保留 beam_size 个前缀，EOS 停止扩展。",
+    "idea": "累加对数概率，结束序列也保留在候选池；这里不用长度惩罚。",
+    "complexity": "O(T·B·V·(T+log(BV))) 教学实现，含复制与排序"
+  },
+  {
+    "id": "kmeans",
+    "title": "K-means 聚类",
+    "category": "机器学习",
+    "path": "ai/kmeans.py",
+    "summary": "x 为 N×D，1<=k<=N，返回分配标签和中心；seed 固定初始化。",
+    "idea": "Lloyd 交替最近中心分配与均值更新；空簇保持旧中心，返回前重新分配。",
+    "complexity": "O(iter·N·k·D) 时间，O(Nk+kD) 空间"
+  },
+  {
+    "id": "knn",
+    "title": "K 近邻分类",
+    "category": "机器学习",
+    "path": "ai/knn.py",
+    "summary": "x 为 N×D 训练样本，labels 为整数标签，queries 为 M×D。",
+    "idea": "平方距离选 k 个邻居，票数相同取较小标签；距离并列按训练下标。",
+    "complexity": "O(M(ND+N log N)) 时间，O(ND) 临时空间；可用选择算法优化排序"
+  },
+  {
+    "id": "linear_regression",
+    "title": "线性回归梯度下降",
+    "category": "机器学习",
+    "path": "ai/linear_regression.py",
+    "summary": "x 为 N×D，y 为 N，返回权重、偏置与损失历史。",
+    "idea": "MSE 的梯度为 2Xᵀ(Xw+b-y)/N；学习率需与数据尺度匹配。",
+    "complexity": "O(iter·ND) 时间，O(N+D) 辅助空间及迭代记录"
+  },
+  {
+    "id": "logistic_regression",
+    "title": "逻辑回归梯度下降",
+    "category": "机器学习",
+    "path": "ai/logistic_regression.py",
+    "summary": "输入 N×D 特征与二分类标签，返回权重和偏置；可选 L2 正则。",
+    "idea": "从稳定 BCE 得到梯度，正则只作用于权重。",
+    "complexity": "O(iter·ND) 时间，O(N+D) 辅助空间"
+  },
+  {
+    "id": "pca",
+    "title": "PCA 降维",
+    "category": "机器学习",
+    "path": "ai/pca.py",
+    "summary": "输入 N×D，返回 N×k 投影、k×D 主方向、均值和 k 个解释方差。",
+    "idea": "中心化后做 SVD；主方向符号不唯一，不能按符号判断正确性。",
+    "complexity": "O(ND·min(N,D)) 稠密 SVD，O(ND) 空间"
+  },
+  {
+    "id": "gaussian_nb",
+    "title": "高斯朴素贝叶斯",
+    "category": "机器学习",
+    "path": "ai/gaussian_nb.py",
+    "summary": "训练每类先验、各维均值与方差，按条件独立假设分类。",
+    "idea": "在 log 域累加概率，方差加平滑，避免连乘下溢与零方差。",
+    "complexity": "此按类切片实现训练 O(CN+ND)，预测 O(MCD)"
+  },
+  {
+    "id": "auc",
+    "title": "ROC AUC",
+    "category": "评估指标",
+    "path": "ai/auc.py",
+    "summary": "labels 为 0/1，scores 越大越偏正类；单一类别时抛出 ValueError。",
+    "idea": "升序分数组：每个正例胜过所有较低分负例，并与同分负例各计半胜。",
+    "complexity": "O(n log n) 时间，O(n) 空间"
+  },
+  {
+    "id": "average_precision",
+    "title": "Average Precision",
+    "category": "评估指标",
+    "path": "ai/average_precision.py",
+    "summary": "二分类标签与置信分数，按相同分数组同时更新阈值；无正例返回 0。",
+    "idea": "AP=sum(召回增量×当前精确率)，不把梯形 PR 面积误当 AP。",
+    "complexity": "O(n log n) 时间，O(n) 空间"
+  },
+  {
+    "id": "ndcg",
+    "title": "NDCG@K",
+    "category": "评估指标",
+    "path": "ai/ndcg.py",
+    "summary": "输入每个候选的非负相关性与预测分数；分数平局按原下标稳定排序。",
+    "idea": "使用增益 2^rel-1 和 log2(rank+1) 折扣，除以理想排序 DCG。",
+    "complexity": "O(n log n) 时间，O(n) 空间"
+  },
+  {
+    "id": "cosine_topk",
+    "title": "余弦相似度 Top-k 检索",
+    "category": "检索排序",
+    "path": "ai/cosine_topk.py",
+    "summary": "输入一个 D 维 query 和 N×D 文档，返回得分降序的下标及分数。",
+    "idea": "先归一化再点积；零向量约定相似度为零；平分按下标。",
+    "complexity": "O(ND+N log N) 时间，O(ND) 空间"
+  },
+  {
+    "id": "iou_nms",
+    "title": "IoU 与 NMS",
+    "category": "计算机视觉",
+    "path": "ai/iou_nms.py",
+    "summary": "boxes 为 N×4 的连续坐标 xyxy，scores 为 N；IoU 大于阈值的框被抑制。",
+    "idea": "贪心保留最高分框，删除与之过度重叠的框；坐标面积不加一。",
+    "complexity": "NMS 最坏 O(N²)，O(N) 辅助空间"
+  },
+  {
+    "id": "conv2d",
+    "title": "二维卷积前向",
+    "category": "计算机视觉",
+    "path": "ai/conv2d.py",
+    "summary": "x 为 NCHW，kernel 为 OIHW；stride/padding 为整数，返回 N×O×Ho×Wo。",
+    "idea": "实现深度学习中的互相关，不翻转卷积核；循环空间位置，einsum 聚合通道和核。",
+    "complexity": "O(N·O·Ho·Wo·I·Kh·Kw)，临时空间为补零输入及输出"
+  },
+  {
+    "id": "max_pool2d",
+    "title": "最大池化前向与反向",
+    "category": "计算机视觉",
+    "path": "ai/max_pool2d.py",
+    "summary": "NCHW 输入，整数窗口和步长，不补零；反向将梯度加到首次最大值处。",
+    "idea": "重叠窗口反向必须累加，不能直接覆盖。",
+    "complexity": "O(NC·HoWo·k²) 时间，缓存 O(NC·HoWo)"
+  },
+  {
+    "id": "mlp_backprop",
+    "title": "两层 ReLU 网络手写反向传播",
+    "category": "神经网络",
+    "path": "ai/mlp_backprop.py",
+    "summary": "x 为 N×D，W1 为 D×H，W2 为 H×C，类别标签为 N；返回 CE 和全部参数梯度。",
+    "idea": "链式法则逐层传递，ReLU 在零处导数约定为零；不用自动微分。",
+    "complexity": "O(NDH+NHC) 时间，O(NH+NC) 激活空间"
+  },
+  {
+    "id": "adam",
+    "title": "Adam 参数更新",
+    "category": "优化器",
+    "path": "ai/adam.py",
+    "summary": "保存同形状的一阶、二阶动量，步数从 1 开始，返回新参数。",
+    "idea": "指数动量加偏差校正；epsilon 放在 sqrt(v_hat) 外。",
+    "complexity": "每步 O(P) 时间和空间"
+  },
+  {
+    "id": "dropout",
+    "title": "Inverted Dropout",
+    "category": "神经网络",
+    "path": "ai/dropout.py",
+    "summary": "p 为丢弃概率，0<=p<1，训练随机丢弃并缩放，推理恒等。",
+    "idea": "除以保留概率让输出期望不变，反向复用同一个掩码。",
+    "complexity": "O(N) 时间和空间"
+  },
+  {
+    "id": "kl_js",
+    "title": "KL 与 JS 散度",
+    "category": "信息论",
+    "path": "ai/kl_js.py",
+    "summary": "p、q 为非负且和为 1 的一维概率向量；使用自然对数。",
+    "idea": "p=0 项贡献零；p>0 且 q=0 时 KL 为无穷；JS 用混合分布。",
+    "complexity": "O(n) 时间，O(n) 临时空间"
+  },
+  {
+    "id": "infonce",
+    "title": "对比学习 InfoNCE",
+    "category": "损失函数",
+    "path": "ai/infonce.py",
+    "summary": "queries 与 keys 都是 N×D，同下标为正对，其余是批内负样本。",
+    "idea": "L2 归一化后计算相似度矩阵，除温度，对角标签做 CE。",
+    "complexity": "O(N²D) 时间，O(N²+ND) 空间"
+  },
+  {
+    "id": "rl_losses",
+    "title": "PPO、DPO 与 GRPO 组内优势",
+    "category": "强化学习",
+    "path": "ai/rl_losses.py",
+    "summary": "PPO 输入新旧动作 logprob 与优势；DPO 输入策略/参考模型的偏好对序列 logprob；GRPO 输入分组奖励。",
+    "idea": "PPO 取 clipped surrogate 的较小者；DPO 对相对偏好 margin 做 log-sigmoid；组内标准化奖励。",
+    "complexity": "O(N) 时间和空间；实现的是核心目标，非完整训练器"
+  },
+  {
+    "id": "bpe",
+    "title": "简化 BPE 训练和编码",
+    "category": "NLP",
+    "path": "ai/bpe.py",
+    "summary": "输入词到频数映射，字符起始，按相邻 token 对的加权频次合并；不跨词。",
+    "idea": "每轮合并最频繁一对，同频按字典序；编码严格重放合并规则。",
+    "complexity": "O(merges·总语料 token 数) 的基础实现；非生产 tokenizer"
+  },
+  {
+    "id": "reservoir_sampling",
+    "title": "蓄水池抽样",
+    "category": "随机算法",
+    "path": "ai/reservoir_sampling.py",
+    "summary": "从长度未知的可迭代流中等概率抽取 k 项；若不足 k 项则返回全部。",
+    "idea": "第 i 项以 k/i 概率进入，随机替换池内一个位置。",
+    "complexity": "O(n) 时间，O(k) 空间"
+  },
+  {
+    "id": "fisher_yates",
+    "title": "原地等概率洗牌",
+    "category": "随机算法",
+    "path": "ai/fisher_yates.py",
+    "summary": "原地打乱数组，返回同一数组；seed 便于复现实验。",
+    "idea": "从后往前，位置 i 与 [0,i] 均匀随机位置交换。",
+    "complexity": "O(n) 时间，O(1) 辅助空间"
+  },
+  {
+    "id": "focal_loss",
+    "title": "Focal Loss",
+    "category": "计算机视觉",
+    "path": "ai/focal_loss.py",
+    "summary": "Focal Loss",
+    "idea": "见代码逐步注释",
+    "complexity": "O(N)"
+  },
+  {
+    "id": "soft_nms",
+    "title": "Gaussian Soft-NMS",
+    "category": "计算机视觉",
+    "path": "ai/soft_nms.py",
+    "summary": "Gaussian Soft-NMS",
+    "idea": "见代码逐步注释",
+    "complexity": "O(N²)"
+  }
+]

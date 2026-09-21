@@ -1,0 +1,118 @@
+[
+  {
+    "id": "leetcode-hot100",
+    "title": "力扣官方 Hot100 学习计划",
+    "url": "https://leetcode.cn/studyplan/top-100-liked/",
+    "kind": "官方题单",
+    "note": "从页面学习计划数据提取 100 个题号、分类、标题与题目 slug。",
+    "checked_on": "2026-09-21"
+  },
+  {
+    "id": "cv2019",
+    "title": "作者 2019 届计算机视觉实习面经",
+    "url": "https://github.com/harleyszhang/cv_note/blob/master/interview_summary/1-计算机视觉岗2019届实习面经.md",
+    "kind": "作者自述",
+    "note": "仅抽取明确的编程主题；具体面试真实性未由公司确认。",
+    "blob_sha": "576e06e5d5fdbbaa92e2bff39ac445340f076cd7",
+    "checked_on": "2026-09-21"
+  },
+  {
+    "id": "cv2020",
+    "title": "作者 2020 届计算机视觉秋招面经",
+    "url": "https://github.com/harleyszhang/cv_note/blob/master/interview_summary/4-计算机视觉岗2020届秋招面经.md",
+    "kind": "作者自述",
+    "note": "区分 AI 岗与软件开发岗；遗忘题、模糊题另列待补。",
+    "blob_sha": "a0c516770bea88c92dcfa2af43656fbee6242c57",
+    "checked_on": "2026-09-21"
+  },
+  {
+    "id": "cv2021",
+    "title": "作者 2021 视觉算法社招面经",
+    "url": "https://github.com/harleyszhang/cv_note/blob/master/interview_summary/5-视觉算法岗2021年社招面经.md",
+    "kind": "作者汇总，未指定公司",
+    "note": "不可将其中题目指定归属给阿里、腾讯等公司。",
+    "blob_sha": "57e9a72cd5e01b25b458dcacda6ef49b6199ebc9",
+    "checked_on": "2026-09-21"
+  },
+  {
+    "id": "huawei0918",
+    "title": "华为 2026-09-18 AI 笔试 P5467 / P5468",
+    "url": "",
+    "kind": "用户提供的题面截图",
+    "note": "来自此前对话中的两张截图。P5467 后续输入字段顺序未展示，练习 CLI 自行约定；不上传原截图。",
+    "checked_on": "2026-09-21"
+  },
+  {
+    "id": "huawei0724",
+    "title": "华为 AI 2026-07-24 笔试回忆",
+    "url": "https://www.nowcoder.com/discuss/914337978896384000",
+    "kind": "公开回忆/整理",
+    "note": "仅使用公开可读的 MoE 题；其余未展示内容不纳入。",
+    "checked_on": "2026-09-21"
+  },
+  {
+    "id": "huawei0917",
+    "title": "华为大模型算法岗面经-04",
+    "url": "https://www.nowcoder.com/discuss/931707110344130560",
+    "kind": "公开整理帖",
+    "note": "公开部分给出 2026-09-17 和为 k 的最长子数组；其余内容不纳入。",
+    "checked_on": "2026-09-21"
+  },
+  {
+    "id": "bytedance0916",
+    "title": "字节 Agent 秋招一面",
+    "url": "https://www.nowcoder.com/discuss/929731481189044224",
+    "kind": "作者自述",
+    "note": "本次重新访问核对；子结构和有序 List 交集可读，交集重复策略未说明。",
+    "checked_on": "2026-09-21"
+  },
+  {
+    "id": "bytedance0920",
+    "title": "9.20 字节 AI Agent 开发一面",
+    "url": "https://www.nowcoder.com/discuss/931682493218947072",
+    "kind": "公开面经帖",
+    "note": "工具日志统计主题明确，日志结构与并列规则由练习补充。",
+    "checked_on": "2026-09-21"
+  },
+  {
+    "id": "baidu0920",
+    "title": "百度大模型算法岗一二面面经",
+    "url": "https://www.nowcoder.com/feed/main/detail/15b32d64325d4c968096eba29076d75d",
+    "kind": "公开面经帖",
+    "note": "明确手撕 LCS 和最长回文子串；不将口述问题自动算作编程题。",
+    "checked_on": "2026-09-21"
+  },
+  {
+    "id": "xiaohongshu0920",
+    "title": "小红书大模型算法面经",
+    "url": "https://www.nowcoder.com/discuss/931682969507332096",
+    "kind": "公开面经帖",
+    "note": "链表两两交换明确；加权热度去重题缺少权重、字段、并列规则。",
+    "checked_on": "2026-09-21"
+  },
+  {
+    "id": "meituan0914",
+    "title": "美团 AI 应用开发一面",
+    "url": "https://www.nowcoder.com/discuss/931678729829384192",
+    "kind": "公开面经帖",
+    "note": "作者称 9 月 14 日面试，手撕最长无重复子串。",
+    "checked_on": "2026-09-21"
+  },
+  {
+    "id": "jd0920",
+    "title": "京东算法工程师笔试与一面",
+    "url": "https://www.nowcoder.com/discuss/931679472032444416",
+    "kind": "公开面经列表摘要",
+    "note": "算法岗面经列表可读按城市汇总订单金额主题；帖子正文返回简化页面，细节未核实。",
+    "listing_url": "https://www.nowcoder.com/experience/645",
+    "checked_on": "2026-09-21"
+  },
+  {
+    "id": "kuaishou0920",
+    "title": "快手 Agent 开发一面",
+    "url": "https://www.nowcoder.com/discuss/931679347587444736",
+    "kind": "公开面经帖",
+    "note": "流式 JSON 半包拼接主题明确，协议边界由练习补充。",
+    "checked_on": "2026-09-21"
+  }
+]

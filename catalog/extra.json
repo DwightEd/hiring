@@ -1,0 +1,512 @@
+[
+  {
+    "id": 8,
+    "slug": "string_to_integer_atoi",
+    "title": "字符串转换整数",
+    "path": "extra/0008_string_to_integer_atoi.py",
+    "url": "https://leetcode.cn/problems/string-to-integer-atoi/",
+    "idea": "跳过前导空格，读取可选符号与连续数字，截断到有符号 32 位范围。",
+    "complexity": "O(n) 时间，O(1) 空间",
+    "category": "字符串与数学"
+  },
+  {
+    "id": 9,
+    "slug": "palindrome_number",
+    "title": "回文整数",
+    "path": "extra/0009_palindrome_number.py",
+    "url": "https://leetcode.cn/problems/palindrome-number/",
+    "idea": "不转字符串，只反转后半数字；末尾为零的非零数直接排除。",
+    "complexity": "O(log n) 时间，O(1) 空间",
+    "category": "字符串与数学"
+  },
+  {
+    "id": 10,
+    "slug": "regular_expression_matching",
+    "title": "正则表达式匹配",
+    "path": "extra/0010_regular_expression_matching.py",
+    "url": "https://leetcode.cn/problems/regular-expression-matching/",
+    "idea": "完整匹配，点号任意单字符，星号重复前一项；模式保证合法。滚动 DP 枚举使用零次或继续使用。",
+    "complexity": "O(mn) 时间，O(n) 空间",
+    "category": "字符串与数学"
+  },
+  {
+    "id": 43,
+    "slug": "multiply_strings",
+    "title": "字符串相乘",
+    "path": "extra/0043_multiply_strings.py",
+    "url": "https://leetcode.cn/problems/multiply-strings/",
+    "idea": "非负十进制数不能整体转 int；按竖式把每对数位贡献加到结果数组。",
+    "complexity": "O(mn) 时间，O(m+n) 空间",
+    "category": "字符串与数学"
+  },
+  {
+    "id": 50,
+    "slug": "powx_n",
+    "title": "快速幂",
+    "path": "extra/0050_powx_n.py",
+    "url": "https://leetcode.cn/problems/powx-n/",
+    "idea": "指数为负时先取倒数，二进制拆分指数；合法输入不会对零取负幂。",
+    "complexity": "O(log(abs(n)+1)) 时间，O(1) 空间",
+    "category": "字符串与数学"
+  },
+  {
+    "id": 69,
+    "slug": "sqrtx",
+    "title": "整数平方根",
+    "path": "extra/0069_sqrtx.py",
+    "url": "https://leetcode.cn/problems/sqrtx/",
+    "idea": "二分寻找平方不超过 x 的最大整数，不用浮点。",
+    "complexity": "O(log(x+1)) 算术操作，O(1) 空间",
+    "category": "字符串与数学"
+  },
+  {
+    "id": 91,
+    "slug": "decode_ways",
+    "title": "数字串解码计数",
+    "path": "extra/0091_decode_ways.py",
+    "url": "https://leetcode.cn/problems/decode-ways/",
+    "idea": "1..26 对应字母，零不能单独解码；滚动 DP 考虑一位和两位结尾。",
+    "complexity": "O(n) 时间，O(1) 空间",
+    "category": "字符串与数学"
+  },
+  {
+    "id": 92,
+    "slug": "reverse_linked_list_ii",
+    "title": "指定区间反转链表",
+    "path": "extra/0092_reverse_linked_list_ii.py",
+    "url": "https://leetcode.cn/problems/reverse-linked-list-ii/",
+    "idea": "1-based 区间 left..right 原地反转；不断把后继搬到区间最前面。",
+    "complexity": "O(n) 时间，O(1) 空间",
+    "category": "链表与数据结构"
+  },
+  {
+    "id": 93,
+    "slug": "restore_ip_addresses",
+    "title": "复原 IPv4 地址",
+    "path": "extra/0093_restore_ip_addresses.py",
+    "url": "https://leetcode.cn/problems/restore-ip-addresses/",
+    "idea": "数字串分成四段，每段 0..255 且无前导零；按剩余长度剪枝。",
+    "complexity": "输出敏感，最多枚举 3^4 个分段；O(n) 输出空间",
+    "category": "字符串与数学"
+  },
+  {
+    "id": 103,
+    "slug": "binary_tree_zigzag_level_order_traversal",
+    "title": "二叉树锯齿层序遍历",
+    "path": "extra/0103_binary_tree_zigzag_level_order_traversal.py",
+    "url": "https://leetcode.cn/problems/binary-tree-zigzag-level-order-traversal/",
+    "idea": "BFS 按层收集，奇数层反转结果，节点处理顺序仍保持从左到右。",
+    "complexity": "O(n) 时间，O(w) 辅助空间",
+    "category": "二叉树"
+  },
+  {
+    "id": 110,
+    "slug": "balanced_binary_tree",
+    "title": "平衡二叉树",
+    "path": "extra/0110_balanced_binary_tree.py",
+    "url": "https://leetcode.cn/problems/balanced-binary-tree/",
+    "idea": "后序计算高度，任一节点两侧高度差超过一即失败；用显式栈避免深递归。",
+    "complexity": "O(n) 时间，O(n) 空间",
+    "category": "二叉树"
+  },
+  {
+    "id": 122,
+    "slug": "best_time_to_buy_and_sell_stock_ii",
+    "title": "股票无限次交易",
+    "path": "extra/0122_best_time_to_buy_and_sell_stock_ii.py",
+    "url": "https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-ii/",
+    "idea": "同时最多持有一股；将所有相邻上涨收益累加。",
+    "complexity": "O(n) 时间，O(1) 空间",
+    "category": "动态规划"
+  },
+  {
+    "id": 123,
+    "slug": "best_time_to_buy_and_sell_stock_iii",
+    "title": "股票最多两次交易",
+    "path": "extra/0123_best_time_to_buy_and_sell_stock_iii.py",
+    "url": "https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-iii/",
+    "idea": "维护第一次买卖和第二次买卖四个状态。",
+    "complexity": "O(n) 时间，O(1) 空间",
+    "category": "动态规划"
+  },
+  {
+    "id": 127,
+    "slug": "word_ladder",
+    "title": "单词接龙",
+    "path": "extra/0127_word_ladder.py",
+    "url": "https://leetcode.cn/problems/word-ladder/",
+    "idea": "每步换一个字母，中间词必须来自字典；双向 BFS 扩展较小边界。",
+    "complexity": "O(N·L²·26) 上界，计 Python 字符串构造；O(NL) 空间",
+    "category": "图论"
+  },
+  {
+    "id": 143,
+    "slug": "reorder_list",
+    "title": "重排链表",
+    "path": "extra/0143_reorder_list.py",
+    "url": "https://leetcode.cn/problems/reorder-list/",
+    "idea": "重排为首、尾、次首、次尾；找中点、反转后半、交替合并。",
+    "complexity": "O(n) 时间，O(1) 空间",
+    "category": "链表与数据结构"
+  },
+  {
+    "id": 151,
+    "slug": "reverse_words_in_a_string",
+    "title": "翻转单词顺序",
+    "path": "extra/0151_reverse_words_in_a_string.py",
+    "url": "https://leetcode.cn/problems/reverse-words-in-a-string/",
+    "idea": "按空白拆词，逆序连接，并去除多余空格。",
+    "complexity": "O(n) 时间和空间",
+    "category": "字符串与数学"
+  },
+  {
+    "id": 165,
+    "slug": "compare_version_numbers",
+    "title": "比较版本号",
+    "path": "extra/0165_compare_version_numbers.py",
+    "url": "https://leetcode.cn/problems/compare-version-numbers/",
+    "idea": "按点分隔的各段数值比较，忽略前导零与末尾零段；不把超长段转 int。",
+    "complexity": "O(m+n) 时间和空间",
+    "category": "字符串与数学"
+  },
+  {
+    "id": 179,
+    "slug": "largest_number",
+    "title": "最大数",
+    "path": "extra/0179_largest_number.py",
+    "url": "https://leetcode.cn/problems/largest-number/",
+    "idea": "把非负整数排列成拼接最大值，用 a+b 与 b+a 决定两数顺序。",
+    "complexity": "O(n log n·L) 时间，O(nL) 空间",
+    "category": "字符串与数学"
+  },
+  {
+    "id": 209,
+    "slug": "minimum_size_subarray_sum",
+    "title": "长度最小的子数组",
+    "path": "extra/0209_minimum_size_subarray_sum.py",
+    "url": "https://leetcode.cn/problems/minimum-size-subarray-sum/",
+    "idea": "数组全为正，求和至少 target 的最短子数组；满足后尽量收缩窗口。",
+    "complexity": "O(n) 时间，O(1) 空间",
+    "category": "数组、排序与双指针"
+  },
+  {
+    "id": 210,
+    "slug": "course_schedule_ii",
+    "title": "课程表顺序",
+    "path": "extra/0210_course_schedule_ii.py",
+    "url": "https://leetcode.cn/problems/course-schedule-ii/",
+    "idea": "Kahn 拓扑排序返回任意可行顺序，有环返回空列表。",
+    "complexity": "O(V+E) 时间和空间",
+    "category": "图论"
+  },
+  {
+    "id": 221,
+    "slug": "maximal_square",
+    "title": "最大正方形",
+    "path": "extra/0221_maximal_square.py",
+    "url": "https://leetcode.cn/problems/maximal-square/",
+    "idea": "字符 0/1 网格，dp 为以当前格为右下角的最大边长，依赖左、上、左上最小值。",
+    "complexity": "O(mn) 时间，O(n) 空间",
+    "category": "动态规划"
+  },
+  {
+    "id": 224,
+    "slug": "basic_calculator",
+    "title": "基本计算器",
+    "path": "extra/0224_basic_calculator.py",
+    "url": "https://leetcode.cn/problems/basic-calculator/",
+    "idea": "支持整数、空格、加减与括号，含一元负号；栈保存括号外的总和与符号。",
+    "complexity": "O(n) 时间，O(n) 空间",
+    "category": "字符串与数学"
+  },
+  {
+    "id": 232,
+    "slug": "implement_queue_using_stacks",
+    "title": "双栈实现队列",
+    "path": "extra/0232_implement_queue_using_stacks.py",
+    "url": "https://leetcode.cn/problems/implement-queue-using-stacks/",
+    "idea": "输入栈只负责追加，输出栈为空时一次搬运全部元素。",
+    "complexity": "操作均摊 O(1)，O(n) 空间",
+    "category": "链表与数据结构"
+  },
+  {
+    "id": 297,
+    "slug": "serialize_and_deserialize_binary_tree",
+    "title": "二叉树序列化",
+    "path": "extra/0297_serialize_and_deserialize_binary_tree.py",
+    "url": "https://leetcode.cn/problems/serialize-and-deserialize-binary-tree/",
+    "idea": "使用含空节点标记的 BFS 序列；反序列化按同一顺序构造。",
+    "complexity": "O(n) 时间和空间",
+    "category": "二叉树"
+  },
+  {
+    "id": 309,
+    "slug": "best_time_to_buy_and_sell_stock_with_cooldown",
+    "title": "股票冷冻期",
+    "path": "extra/0309_best_time_to_buy_and_sell_stock_with_cooldown.py",
+    "url": "https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-with-cooldown/",
+    "idea": "卖出后一天不能买入，维护持股、今天卖出、空仓休息三个状态。",
+    "complexity": "O(n) 时间，O(1) 空间",
+    "category": "动态规划"
+  },
+  {
+    "id": 402,
+    "slug": "remove_k_digits",
+    "title": "移掉 K 位数字",
+    "path": "extra/0402_remove_k_digits.py",
+    "url": "https://leetcode.cn/problems/remove-k-digits/",
+    "idea": "删除恰好 k 位使非负数最小，单调栈贪心优先删除较大的前位。",
+    "complexity": "O(n) 时间和空间",
+    "category": "字符串与数学"
+  },
+  {
+    "id": 415,
+    "slug": "add_strings",
+    "title": "大数加法",
+    "path": "extra/0415_add_strings.py",
+    "url": "https://leetcode.cn/problems/add-strings/",
+    "idea": "不整体转 int，逆序逐位加法处理进位。",
+    "complexity": "O(m+n) 时间，O(max(m,n)) 输出空间",
+    "category": "字符串与数学"
+  },
+  {
+    "id": 460,
+    "slug": "lfu_cache",
+    "title": "LFU 缓存",
+    "path": "extra/0460_lfu_cache.py",
+    "url": "https://leetcode.cn/problems/lfu-cache/",
+    "idea": "按访问频率淘汰，同频淘汰最久未用项；频率桶中维护 OrderedDict。",
+    "complexity": "get/put O(1) 期望，O(capacity) 空间",
+    "category": "链表与数据结构"
+  },
+  {
+    "id": 503,
+    "slug": "next_greater_element_ii",
+    "title": "循环数组下一个更大元素",
+    "path": "extra/0503_next_greater_element_ii.py",
+    "url": "https://leetcode.cn/problems/next-greater-element-ii/",
+    "idea": "扫描两遍下标，单调栈只在第一遍入栈，第二遍负责补齐跨边界答案。",
+    "complexity": "O(n) 时间和空间",
+    "category": "数组、排序与双指针"
+  },
+  {
+    "id": 518,
+    "slug": "coin_change_ii",
+    "title": "零钱兑换组合数",
+    "path": "extra/0518_coin_change_ii.py",
+    "url": "https://leetcode.cn/problems/coin-change-ii/",
+    "idea": "面额互异正数且可无限使用；先遍历硬币，再顺序遍历金额，避免计算排列。",
+    "complexity": "O(amount·种类数) 时间，O(amount) 空间",
+    "category": "动态规划"
+  },
+  {
+    "id": 547,
+    "slug": "number_of_provinces",
+    "title": "省份数量",
+    "path": "extra/0547_number_of_provinces.py",
+    "url": "https://leetcode.cn/problems/number-of-provinces/",
+    "idea": "无向邻接矩阵的连通块数，并查集路径压缩与按大小合并。",
+    "complexity": "O(n² α(n)) 上界，O(n) 空间",
+    "category": "图论"
+  },
+  {
+    "id": 714,
+    "slug": "best_time_to_buy_and_sell_stock_with_transaction_fee",
+    "title": "股票交易手续费",
+    "path": "extra/0714_best_time_to_buy_and_sell_stock_with_transaction_fee.py",
+    "url": "https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-with-transaction-fee/",
+    "idea": "无限交易，每次卖出收一次手续费；维护持股和空仓状态。",
+    "complexity": "O(n) 时间，O(1) 空间",
+    "category": "动态规划"
+  },
+  {
+    "id": 718,
+    "slug": "maximum_length_of_repeated_subarray",
+    "title": "最长重复子数组",
+    "path": "extra/0718_maximum_length_of_repeated_subarray.py",
+    "url": "https://leetcode.cn/problems/maximum-length-of-repeated-subarray/",
+    "idea": "沿两数组的每条对角线连续比较，断开便重置长度。",
+    "complexity": "O(mn) 时间，O(1) 空间",
+    "category": "动态规划"
+  },
+  {
+    "id": 743,
+    "slug": "network_delay_time",
+    "title": "网络延迟时间",
+    "path": "extra/0743_network_delay_time.py",
+    "url": "https://leetcode.cn/problems/network-delay-time/",
+    "idea": "非负权有向图，从起点向所有点传播的最晚到达时间；Dijkstra 用最小堆。",
+    "complexity": "O((V+E) log(E+1)) 时间，O(V+E) 空间",
+    "category": "图论"
+  },
+  {
+    "id": 862,
+    "slug": "shortest_subarray_with_sum_at_least_k",
+    "title": "含负数的最短达标子数组",
+    "path": "extra/0862_shortest_subarray_with_sum_at_least_k.py",
+    "url": "https://leetcode.cn/problems/shortest-subarray-with-sum-at-least-k/",
+    "idea": "普通滑窗不适用；前缀和配单调队列，淘汰已结算的队首及被新前缀支配的队尾。",
+    "complexity": "O(n) 时间和空间",
+    "category": "数组、排序与双指针"
+  },
+  {
+    "id": 912,
+    "slug": "sort_an_array",
+    "title": "手写堆排序",
+    "path": "extra/0912_sort_an_array.py",
+    "url": "https://leetcode.cn/problems/sort-an-array/",
+    "idea": "原地建立最大堆，再将堆顶逐次换到末尾并缩小堆。",
+    "complexity": "最坏 O(n log n) 时间，O(1) 辅助空间",
+    "category": "数组、排序与双指针"
+  },
+  {
+    "id": 1012,
+    "slug": "numbers_with_repeated_digits",
+    "title": "至少一位重复数字",
+    "path": "extra/1012_numbers_with_repeated_digits.py",
+    "url": "https://leetcode.cn/problems/numbers-with-repeated-digits/",
+    "idea": "数位 DP 统计 1..n 中所有数位互异的数，再用 n 减去；前导零不占数字位。",
+    "complexity": "O(log n·2^10·10) 时间，O(log n·2^10) 空间",
+    "category": "字符串与数学"
+  },
+  {
+    "id": 1584,
+    "slug": "min_cost_to_connect_all_points",
+    "title": "连接所有点的最小费用",
+    "path": "extra/1584_min_cost_to_connect_all_points.py",
+    "url": "https://leetcode.cn/problems/min-cost-to-connect-all-points/",
+    "idea": "完全图曼哈顿距离，朴素 Prim 不显式保存 n² 条边。",
+    "complexity": "O(n²) 时间，O(n) 空间；二维几何有更复杂的 O(n log n) 方法",
+    "category": "图论"
+  },
+  {
+    "id": "top_k_numbers",
+    "slug": "top_k_numbers",
+    "title": "前 K 大或前 K 小",
+    "path": "extra/top_k_numbers.py",
+    "url": null,
+    "idea": "返回最大/最小 k 个值并按目标顺序排序，重复值保留；小顶堆保留最大 k 个。",
+    "complexity": "O(n log(k+1)+k log(k+1)) 时间，O(k) 空间",
+    "category": "数组、排序与双指针"
+  },
+  {
+    "id": "sorted_intersection",
+    "slug": "sorted_intersection",
+    "title": "有序列表公共元素",
+    "path": "extra/sorted_intersection.py",
+    "url": null,
+    "idea": "两个升序列表输出去重交集；各指针只前进。",
+    "complexity": "O(m+n) 时间，O(1) 辅助空间，不计输出",
+    "category": "数组、排序与双指针"
+  },
+  {
+    "id": "tree_substructure",
+    "slug": "tree_substructure",
+    "title": "二叉树子结构",
+    "path": "extra/tree_substructure.py",
+    "url": null,
+    "idea": "非空 B 是否能匹配 A 的某个节点起始的部分结构；B 为空按题型约定返回 False。",
+    "complexity": "最坏 O(mn) 时间，O(m+n) 辅助空间",
+    "category": "二叉树"
+  },
+  {
+    "id": "character_complement",
+    "slug": "character_complement",
+    "title": "字符种类补集",
+    "path": "extra/character_complement.py",
+    "url": null,
+    "idea": "返回 a 中出现而 b 中未出现的字符，按首次出现顺序去重；不是多重集合差。",
+    "complexity": "O(m+n) 期望时间，O(字符集大小) 空间",
+    "category": "字符串与数学"
+  },
+  {
+    "id": "rectangle_overlap",
+    "slug": "rectangle_overlap",
+    "title": "矩形相交面积",
+    "path": "extra/rectangle_overlap.py",
+    "url": null,
+    "idea": "轴对齐矩形，输入 (x1,y1,x2,y2)，x1<=x2、y1<=y2；返回相交面积而非 IoU。",
+    "complexity": "O(1) 时间和空间",
+    "category": "数组、排序与双指针"
+  },
+  {
+    "id": "partition_pivots",
+    "slug": "partition_pivots",
+    "title": "左侧全小右侧全大的元素",
+    "path": "extra/partition_pivots.py",
+    "url": null,
+    "idea": "找所有严格大于全部左侧且小于全部右侧的元素下标；端点空侧条件视为成立。",
+    "complexity": "O(n) 时间和空间",
+    "category": "数组、排序与双指针"
+  },
+  {
+    "id": "quicksort",
+    "slug": "quicksort",
+    "title": "手写三路快速排序",
+    "path": "extra/quicksort.py",
+    "url": null,
+    "idea": "随机枢轴三路分区，先处理小区间、大区间压栈，控制栈高度。",
+    "complexity": "O(n log n) 期望、O(n²) 最坏时间，O(log n) 栈空间",
+    "category": "数组、排序与双指针"
+  },
+  {
+    "id": "max_length_sum_k",
+    "slug": "max_length_sum_k",
+    "title": "和为 K 的最长子数组",
+    "path": "extra/max_length_sum_k.py",
+    "url": "",
+    "idea": "前缀和记录最早位置",
+    "complexity": "O(n) 时间空间",
+    "category": "数组、排序与双指针"
+  },
+  {
+    "id": "bubble_sort",
+    "slug": "bubble_sort",
+    "title": "优化冒泡排序",
+    "path": "extra/bubble_sort.py",
+    "url": "",
+    "idea": "记录最后交换位置",
+    "complexity": "最好 O(n)，最坏 O(n²)，O(1) 空间",
+    "category": "数组、排序与双指针"
+  },
+  {
+    "id": "tool_log_statistics",
+    "slug": "tool_log_statistics",
+    "title": "工具调用日志统计",
+    "path": "extra/tool_log_statistics.py",
+    "url": "",
+    "idea": "哈希计数；并列按首次出现",
+    "complexity": "O(n+m) 时间，O(m) 空间",
+    "category": "Agent 与数据处理"
+  },
+  {
+    "id": "weighted_unique_topk",
+    "slug": "weighted_unique_topk",
+    "title": "加权热度去重 Top K",
+    "path": "extra/weighted_unique_topk.py",
+    "url": "",
+    "idea": "每个 ID 保留最高分后用堆选 K",
+    "complexity": "O(nd+u log(k+1)+k log k) 时间",
+    "category": "数组、排序与双指针"
+  },
+  {
+    "id": "city_order_totals",
+    "slug": "city_order_totals",
+    "title": "按城市汇总订单",
+    "path": "extra/city_order_totals.py",
+    "url": "",
+    "idea": "整数分累计",
+    "complexity": "O(n) 时间，O(c) 空间",
+    "category": "Agent 与数据处理"
+  },
+  {
+    "id": "stream_json",
+    "slug": "stream_json",
+    "title": "流式 JSON 分帧",
+    "path": "extra/stream_json.py",
+    "url": "",
+    "idea": "状态机处理括号和字符串转义",
+    "complexity": "O(n) 时间，O(最长帧) 工作空间",
+    "category": "Agent 与数据处理"
+  }
+]
