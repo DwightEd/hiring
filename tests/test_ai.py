@@ -119,6 +119,21 @@ class AITests(unittest.TestCase):
         # 头1的权重为 3/4、1/4；头2为 1/2、1/2；全遮罩行输出零。
         self.close(layer.forward(query, key, value, mask), [[[4., 6., 10., 12.], [0., 0., 0., 0.]]])
 
+    def test_feed_forward(self):
+        layer = self.ai('feed_forward').FeedForward(2, 3)
+        layer.w1[:] = [[1., -1., 2.], [0., 1., -1.]]
+        layer.b1[:] = [1., 0., -1.]
+        layer.w2[:] = [[1., 2.], [3., 4.], [5., 6.]]
+        layer.b2[:] = [.5, -.5]
+        x = np.array([[[1., 2.], [-2., 1.]]])
+        # 隐层分别为 ReLU([2,1,-1]) 和 ReLU([-1,3,-6])。
+        expected = [[[5.5, 7.5], [9.5, 11.5]]]
+        self.close(layer.forward(x), expected)
+        changed = x.copy()
+        changed[:, 1] += 100
+        self.close(layer.forward(changed)[:, 0], np.array(expected)[:, 0])
+        self.close(x, [[[1., 2.], [-2., 1.]]])
+
     def test_rope(self):
         module=self.ai('rope');rng=np.random.default_rng(8);x=rng.normal(size=(2,5,6))
         result=module.rope(x);self.close(result[:,0],x[:,0])
