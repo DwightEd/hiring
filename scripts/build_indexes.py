@@ -50,5 +50,5 @@ def write_companies():
 if __name__=='__main__':
     write_problem_index('hot100','LeetCode Hot100 · 100/100','分类与题号以 2026-09-21 力扣官方 Hot100 学习计划为准；每个文件含题意、思路、时间/空间复杂度与原题链接。')
     write_problem_index('extra','面经与高频补充 · 51 题','覆盖 Hot100 之外的常见算法以及有明确主题的面经改编。公司归属以公司索引为准，未绑定来源的条目是备考补充，不宣称是某公司的真题。')
-    write_problem_index('ai','AI 算法手撕 · 36 模块','NumPy / 标准库实现：数值稳定性、维度、梯度、并列规则写在文件头。每个模块计一次，前向和反向不重复计数。运行测试需安装 requirements.txt。')
+    write_problem_index('ai',f"AI 算法手撕 · {len(read('ai'))} 模块",'NumPy / 标准库实现：数值稳定性、维度、梯度、并列规则写在文件头。每个模块计一次，前向和反向不重复计数。运行测试需安装 requirements.txt。\n\n[手写 Transformer：架构、张量维度与调试教程](../docs/TRANSFORMER.md)；运行 `python transformer_demo.py` 观察完整前向。')
     write_companies()

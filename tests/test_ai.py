@@ -33,7 +33,7 @@ class AITests(unittest.TestCase):
 
     def test_catalog_coverage(self):
         ids={row['id'] for row in catalog('ai')}
-        self.assertEqual(len(ids),36)
+        self.assertEqual(len(ids),38)
         self.assertTrue(all(hasattr(self,'test_'+identifier) for identifier in ids))
 
     def test_softmax(self):
@@ -133,6 +133,15 @@ class AITests(unittest.TestCase):
         changed[:, 1] += 100
         self.close(layer.forward(changed)[:, 0], np.array(expected)[:, 0])
         self.close(x, [[[1., 2.], [-2., 1.]]])
+
+    def test_transformer(self):
+        model = self.ai('transformer').Transformer(12, 13, d_model=8, heads=2, num_layers=2, seed=8)
+        source = np.array([[2, 3, 0], [4, 0, 0]])
+        target = np.array([[1, 5, 6], [1, 7, 0]])
+        logits = model.forward(source, target)
+        self.assertEqual(logits.shape, (2, 3, 13))
+        self.assertTrue(np.isfinite(logits).all())
+        self.close(model.forward(source, target), logits)
 
     def test_rope(self):
         module=self.ai('rope');rng=np.random.default_rng(8);x=rng.normal(size=(2,5,6))

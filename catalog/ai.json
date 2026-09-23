@@ -64,12 +64,30 @@
   },
   {
     "id": "multihead_attention",
-    "title": "MHA、MQA、GQA 统一实现",
+    "title": "MHA、MQA、GQA 与显式交叉注意力",
     "category": "Transformer",
     "path": "ai/multihead_attention.py",
-    "summary": "x 为 B×T×D，Q 头数 H，KV 头数 G 且 H%G=0；传入各投影矩阵，可选因果遮罩。",
-    "idea": "投影后显式拆头，G 个 KV 头供各组 Q 头共享，再合并投影。",
-    "complexity": "O(BTD²+BT²D) 常规稠密计算；O(BHT²) 注意力空间"
+    "summary": "函数实现 MHA/MQA/GQA；MultiHeadAttention 类显式接收 B×Tq×D 的 Q 与 B×Tk×D 的 K/V，支持遮罩。",
+    "idea": "Q/K/V 投影、拆头、缩放点积、合头与输出投影；Q 可来自解码器，K/V 来自编码器。",
+    "complexity": "O(B(Tq+Tk)D²+BTqTkD) 时间；O(BHTqTk) 注意力空间"
+  },
+  {
+    "id": "feed_forward",
+    "title": "逐位置前馈网络 FFN",
+    "category": "Transformer",
+    "path": "ai/feed_forward.py",
+    "summary": "输入 B×T×D，经过 D→d_ff→D 两层线性变换，输出同形状；参数在各位置共享。",
+    "idea": "ReLU(xW1+b1)W2+b2；只变换特征维，不混合 token，可接残差连接。",
+    "complexity": "O(BTD·d_ff) 时间；O(BT·d_ff) 激活空间"
+  },
+  {
+    "id": "transformer",
+    "title": "完整 Encoder–Decoder Transformer 前向",
+    "category": "Transformer",
+    "path": "ai/transformer.py",
+    "summary": "从源/目标 token ID 经 Embedding、正弦位置编码和多层编码解码输出词表 logits；纯 NumPy 推理教学实现。",
+    "idea": "双向/因果自注意力、交叉注意力、ReLU FFN、残差与 Post-LN；源/目标 padding mask，调用方右移目标输入。",
+    "complexity": "每层 O(B[(S+T)(D²+D·d_ff)+(S²+T²+ST)D])；词表投影 O(BTDV)"
   },
   {
     "id": "rope",

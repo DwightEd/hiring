@@ -1,6 +1,8 @@
-# AI 算法手撕 · 36 模块
+# AI 算法手撕 · 38 模块
 
 NumPy / 标准库实现：数值稳定性、维度、梯度、并列规则写在文件头。每个模块计一次，前向和反向不重复计数。运行测试需安装 requirements.txt。
+
+[手写 Transformer：架构、张量维度与调试教程](../docs/TRANSFORMER.md)；运行 `python transformer_demo.py` 观察完整前向。
 
 [返回总目录](../README.md)
 
@@ -26,12 +28,14 @@ NumPy / 标准库实现：数值稳定性、维度、梯度、并列规则写在
 | [RMSNorm](../ai/rms_norm.py) | 按均方根缩放，与 LayerNorm 的去均值步骤不同。 | O(ND) 时间和空间 |
 | [BatchNorm 训练与推理](../ai/batch_norm.py) | 区分训练统计量与推理 running statistics，训练 batch 至少两个样本。 | 每次 O(ND) 时间、O(ND) 输出及临时空间 |
 
-## Transformer（4）
+## Transformer（6）
 
 | 题目 / 代码 | 核心思路 | 复杂度 |
 |---|---|---|
 | [缩放点积注意力和反向传播](../ai/attention.py) | QKᵀ/sqrt(d)，屏蔽后按行 softmax，再乘 V；链式求导得到 dQ,dK,dV。 | O(Tq·Tk·(d+dv)) 时间，O(Tq·Tk) 注意力空间 |
-| [MHA、MQA、GQA 统一实现](../ai/multihead_attention.py) | 投影后显式拆头，G 个 KV 头供各组 Q 头共享，再合并投影。 | O(BTD²+BT²D) 常规稠密计算；O(BHT²) 注意力空间 |
+| [MHA、MQA、GQA 与显式交叉注意力](../ai/multihead_attention.py) | Q/K/V 投影、拆头、缩放点积、合头与输出投影；Q 可来自解码器，K/V 来自编码器。 | O(B(Tq+Tk)D²+BTqTkD) 时间；O(BHTqTk) 注意力空间 |
+| [逐位置前馈网络 FFN](../ai/feed_forward.py) | ReLU(xW1+b1)W2+b2；只变换特征维，不混合 token，可接残差连接。 | O(BTD·d_ff) 时间；O(BT·d_ff) 激活空间 |
+| [完整 Encoder–Decoder Transformer 前向](../ai/transformer.py) | 双向/因果自注意力、交叉注意力、ReLU FFN、残差与 Post-LN；源/目标 padding mask，调用方右移目标输入。 | 每层 O(B[(S+T)(D²+D·d_ff)+(S²+T²+ST)D])；词表投影 O(BTDV) |
 | [旋转位置编码 RoPE](../ai/rope.py) | 相邻偶奇维按位置相关角度旋转；保持范数，点积只依赖相对角度。 | O(TD) 每个前导样本；同量级输出空间 |
 | [LoRA 线性层及合并权重](../ai/lora.py) | 输出 xW+(alpha/r)(xA)B；合并时 W'=W+(alpha/r)AB。 | 附加 O(Nr(Din+Dout)) 时间，O(r(Din+Dout)) 参数 |
 
