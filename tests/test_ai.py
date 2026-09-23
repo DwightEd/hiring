@@ -108,6 +108,17 @@ class AITests(unittest.TestCase):
         result2=self.ai('multihead_attention').multihead_attention(changed,identity,kv,kv,identity,2,kv_heads=1)
         self.close(result[:,0],result2[:,0])
 
+    def test_multihead_cross_attention(self):
+        layer = self.ai('multihead_attention').MultiHeadAttention(4, 2)
+        for name in ('wq', 'wk', 'wv', 'wo'):
+            getattr(layer, name)[:] = np.eye(4)
+        query = np.array([[[np.sqrt(2) * np.log(3), 0., 0., 0.], [0., 0., 0., 0.]]])
+        key = np.array([[[1., 0., 0., 1.], [0., 1., 1., 0.], [100., 100., 100., 100.]]])
+        value = np.array([[[2., 4., 6., 8.], [10., 12., 14., 16.], [999., 999., 999., 999.]]])
+        mask = np.array([[True, True, False], [False, False, False]])
+        # 头1的权重为 3/4、1/4；头2为 1/2、1/2；全遮罩行输出零。
+        self.close(layer.forward(query, key, value, mask), [[[4., 6., 10., 12.], [0., 0., 0., 0.]]])
+
     def test_rope(self):
         module=self.ai('rope');rng=np.random.default_rng(8);x=rng.normal(size=(2,5,6))
         result=module.rope(x);self.close(result[:,0],x[:,0])
