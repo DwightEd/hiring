@@ -32,9 +32,9 @@ def write_companies():
     sources={row['id']:row for row in read('sources')}
     groups=defaultdict(list)
     for row in read('company_questions'):groups[row['company']].append(row)
-    lines=['# 公司面经 → 编程题索引','','这里记录公开页面或已提供题面中出现的编程主题。面经是网友自述或整理，不代表公司官方题库；核对日期为 2026-09-21。','',
-           '同一题只保留一份解答，下面直接引用 Hot100、补充题或 AI 模块。主题不完整的题标为改编；补充的输入约定写在代码文件头。未披露公司、非 AI 岗也分别标明。','',
-           '[华为三道笔试题与样例](huawei/README.md) · [来源清单与待补题](../docs/SOURCES.md) · [返回总目录](../README.md)','']
+    lines=['# 公司面经 → 编程题索引','','这里记录公开页面或已提供题面中出现的编程主题。面经是网友自述或整理，不代表公司官方题库；每项来源的核对日期见 catalog/sources.json。','',
+           '同一题不重复计数，下面直接引用 Hot100、补充题、AI 模块或公司专属题面与实现。主题不完整的题标为改编；补充的输入约定写在代码文件头。未披露公司、非 AI 岗也分别标明。','',
+           '[华为三道笔试题与样例](huawei/README.md) · [拼多多四题完整题面与代码](pinduoduo/README.md) · [来源清单与待补题](../docs/SOURCES.md) · [返回总目录](../README.md)','']
     for company,rows in groups.items():
         lines += [f'## {company}','','| 岗位 / 时间 | 题目与解答 | 来源 / 收录状态 |','|---|---|---|']
         for row in rows:

@@ -269,5 +269,57 @@
     ],
     "status": "题意明确，按标准题实现",
     "notes": "LC35 是 lower_bound；要做精确二分须检查结果下标是否在界内且对应值等于目标。最小 K 数设置 largest=False。"
+  },
+  {
+    "company": "拼多多",
+    "role": "笔试（岗位未展示）",
+    "period": "2026-09-22（截图标注）",
+    "source_id": "pinduoduo0922",
+    "title": "货架最少搬运次数",
+    "paths": [
+      "companies/pinduoduo/01_shelf_moves.md",
+      "companies/pinduoduo/shelf_moves.py"
+    ],
+    "status": "按用户截图完整整理规则、I/O 与约束；缺失样例明确标注",
+    "notes": "原货架不拼接；连续等值段计数。"
+  },
+  {
+    "company": "拼多多",
+    "role": "笔试（岗位未展示）",
+    "period": "2026-09-22（截图标注）",
+    "source_id": "pinduoduo0922",
+    "title": "多多字符串",
+    "paths": [
+      "companies/pinduoduo/02_duoduo_string.md",
+      "companies/pinduoduo/duoduo_string.py"
+    ],
+    "status": "按用户截图完整整理规则、I/O 与约束；缺失样例明确标注",
+    "notes": "允许删除字符；三段均可为空；a 总数加 #b-#a 最大区间收益。"
+  },
+  {
+    "company": "拼多多",
+    "role": "笔试（岗位未展示）",
+    "period": "2026-09-22（截图标注）",
+    "source_id": "pinduoduo0922",
+    "title": "果园最小收集边长",
+    "paths": [
+      "companies/pinduoduo/03_orchard_square.md",
+      "companies/pinduoduo/orchard_square.py"
+    ],
+    "status": "按用户截图完整整理规则、I/O 与约束；缺失样例明确标注",
+    "notes": "完整单元格边长为极差加一；二分、扫描线、离散化和区间加最大值。"
+  },
+  {
+    "company": "拼多多",
+    "role": "笔试（岗位未展示）",
+    "period": "2026-09-22（截图标注）",
+    "source_id": "pinduoduo0922",
+    "title": "括号串翻转与合法查询",
+    "paths": [
+      "companies/pinduoduo/04_bracket_queries.md",
+      "companies/pinduoduo/bracket_queries.py"
+    ],
+    "status": "按用户截图完整整理规则、I/O 与约束；缺失样例明确标注",
+    "notes": "翻转括号种类而非字符顺序；前缀极值懒标记线段树；另附 C++17 时限备选。"
   }
 ]

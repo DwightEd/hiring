@@ -1,10 +1,10 @@
 # 公司面经 → 编程题索引
 
-这里记录公开页面或已提供题面中出现的编程主题。面经是网友自述或整理，不代表公司官方题库；核对日期为 2026-09-21。
+这里记录公开页面或已提供题面中出现的编程主题。面经是网友自述或整理，不代表公司官方题库；每项来源的核对日期见 catalog/sources.json。
 
-同一题只保留一份解答，下面直接引用 Hot100、补充题或 AI 模块。主题不完整的题标为改编；补充的输入约定写在代码文件头。未披露公司、非 AI 岗也分别标明。
+同一题不重复计数，下面直接引用 Hot100、补充题、AI 模块或公司专属题面与实现。主题不完整的题标为改编；补充的输入约定写在代码文件头。未披露公司、非 AI 岗也分别标明。
 
-[华为三道笔试题与样例](huawei/README.md) · [来源清单与待补题](../docs/SOURCES.md) · [返回总目录](../README.md)
+[华为三道笔试题与样例](huawei/README.md) · [拼多多四题完整题面与代码](pinduoduo/README.md) · [来源清单与待补题](../docs/SOURCES.md) · [返回总目录](../README.md)
 
 ## 华为
 
@@ -98,3 +98,16 @@
 | 视觉算法社招 / 2021 | Soft-NMS；Focal Loss；Softmax；[soft_nms](../ai/soft_nms.py)、[focal_loss](../ai/focal_loss.py)、[softmax](../ai/softmax.py) | [作者 2021 视觉算法社招面经](https://github.com/harleyszhang/cv_note/blob/master/interview_summary/5-视觉算法岗2021年社招面经.md)；题意明确，按标准题实现 |
 | 视觉算法社招 / 2021 | 二分、反转链表、最小栈、回文子串、最小 K 数、冒泡、枢轴位置、快排、无重复子串、N 皇后、第 K 大；[0035_search_insert_position](../hot100/11_二分查找/0035_search_insert_position.py)、[0206_reverse_linked_list](../hot100/07_链表/0206_reverse_linked_list.py)、[0155_min_stack](../hot100/12_栈/0155_min_stack.py)、[0005_longest_palindromic_substring](../hot100/16_多维动态规划/0005_longest_palindromic_substring.py)、[top_k_numbers](../extra/top_k_numbers.py)、[bubble_sort](../extra/bubble_sort.py)、[partition_pivots](../extra/partition_pivots.py)、[quicksort](../extra/quicksort.py)、[0003_longest_substring_without_repeating_characters](../hot100/03_滑动窗口/0003_longest_substring_without_repeating_characters.py)、[0051_n_queens](../hot100/10_回溯/0051_n_queens.py)、[0215_kth_largest_element_in_an_array](../hot100/13_堆/0215_kth_largest_element_in_an_array.py) | [作者 2021 视觉算法社招面经](https://github.com/harleyszhang/cv_note/blob/master/interview_summary/5-视觉算法岗2021年社招面经.md)；题意明确，按标准题实现 |
 | 说明 | LC35 是 lower_bound；要做精确二分须检查结果下标是否在界内且对应值等于目标。最小 K 数设置 largest=False。 | |
+
+## 拼多多
+
+| 岗位 / 时间 | 题目与解答 | 来源 / 收录状态 |
+|---|---|---|
+| 笔试（岗位未展示） / 2026-09-22（截图标注） | 货架最少搬运次数；[01_shelf_moves](../companies/pinduoduo/01_shelf_moves.md)、[shelf_moves](../companies/pinduoduo/shelf_moves.py) | 拼多多 2026-09-22 四道笔试题（截图标注）（已提供截图）；按用户截图完整整理规则、I/O 与约束；缺失样例明确标注 |
+| 说明 | 原货架不拼接；连续等值段计数。 | |
+| 笔试（岗位未展示） / 2026-09-22（截图标注） | 多多字符串；[02_duoduo_string](../companies/pinduoduo/02_duoduo_string.md)、[duoduo_string](../companies/pinduoduo/duoduo_string.py) | 拼多多 2026-09-22 四道笔试题（截图标注）（已提供截图）；按用户截图完整整理规则、I/O 与约束；缺失样例明确标注 |
+| 说明 | 允许删除字符；三段均可为空；a 总数加 #b-#a 最大区间收益。 | |
+| 笔试（岗位未展示） / 2026-09-22（截图标注） | 果园最小收集边长；[03_orchard_square](../companies/pinduoduo/03_orchard_square.md)、[orchard_square](../companies/pinduoduo/orchard_square.py) | 拼多多 2026-09-22 四道笔试题（截图标注）（已提供截图）；按用户截图完整整理规则、I/O 与约束；缺失样例明确标注 |
+| 说明 | 完整单元格边长为极差加一；二分、扫描线、离散化和区间加最大值。 | |
+| 笔试（岗位未展示） / 2026-09-22（截图标注） | 括号串翻转与合法查询；[04_bracket_queries](../companies/pinduoduo/04_bracket_queries.md)、[bracket_queries](../companies/pinduoduo/bracket_queries.py) | 拼多多 2026-09-22 四道笔试题（截图标注）（已提供截图）；按用户截图完整整理规则、I/O 与约束；缺失样例明确标注 |
+| 说明 | 翻转括号种类而非字符顺序；前缀极值懒标记线段树；另附 C++17 时限备选。 | |
