@@ -65,11 +65,48 @@ class Solution:
         backtrack(0)
         return answer
 
+    def solveNQueens1(self, n):
+        """逐行重算当前可用列，展示最直接的回溯过程。"""
+        result = []
+        mask = (1 << n) - 1
+        path = []
+
+        def search():
+            if len(path) == n:
+                result.append([
+                    '.' * column + 'Q' + '.' * (n - column - 1)
+                    for column in path
+                ])
+                return
+
+            available = mask
+            for distance, previous_column in enumerate(reversed(path), start=1):
+                available &= ~(1 << previous_column)
+
+                left_column = previous_column - distance
+                right_column = previous_column + distance
+
+                if left_column >= 0:
+                    available &= ~(1 << left_column)
+                if right_column < n:
+                    available &= ~(1 << right_column)
+
+            while available:
+                bit = available & -available
+                available -= bit
+
+                path.append(bit.bit_length() - 1)
+                search()
+                path.pop()
+
+        search()
+        return result
+
 
 def main():
     n = 4
     solution = Solution()
-    result = solution.solveNQueensReadable(n)
+    result = solution.solveNQueens1(n)
     for board in result:
         for row in board:
             print(row)

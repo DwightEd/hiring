@@ -222,6 +222,9 @@ class Hot100Tests(unittest.TestCase):
         readable=solution('hot100',51).solveNQueensReadable(4)
         self.assertEqual({tuple(board) for board in readable},{tuple(board) for board in boards})
         self.assertEqual(solution('hot100',51).solveNQueensReadable(1),[['Q']])
+        step_by_step=solution('hot100',51).solveNQueens1(4)
+        self.assertEqual({tuple(board) for board in step_by_step},{tuple(board) for board in boards})
+        self.assertEqual(solution('hot100',51).solveNQueens1(1),[['Q']])
 
     def test_random_against_bruteforce(self):
         rng=random.Random(2026)
